@@ -1,0 +1,49 @@
+# ---- R & RStudio ----
+.Rhistory
+.RData
+.Rproj.user/
+.Ruserdata
+.Rprofile
+
+# ---- Python (if you mix in some scripts) ----
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.ipynb_checkpoints
+
+# ---- Data ----
+# Ignore raw datasets (keep only .gitkeep)
+data/raw/*
+!data/raw/.gitkeep
+
+# Ignore processed intermediates (optional — keep if they’re too big)
+data/processed/*
+!data/processed/.gitkeep
+
+# Common large file formats
+*.rds
+*.RData
+*.csv
+*.tsv
+*.txt
+*.xlsx
+*.zip
+*.tar.gz
+*.gz
+*.fastq
+*.bam
+*.sam
+*.vcf
+
+# ---- Results ----
+results/*
+!results/.gitkeep
+results/figures/*
+!results/figures/.gitkeep
+
+# ---- OS & Editor ----
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
