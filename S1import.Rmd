@@ -1,0 +1,37 @@
+
+#Step 1 Load pacakages----
+suppressPackageStartupMessages({
+library(tidyverse)    # includes dplyr, readr, stringr, etc.
+library(DESeq2)
+library(edgeR)
+library(limma)
+library(clusterProfiler)
+library(datapasta)  #great for copy/paste data into the R environment
+library(readxl)
+library(janitor)    # clean_names()
+})
+
+# Step 2 - Read in study design and clean ----
+# Each row in this s1 downloaded excel is a dataset. I cleaned up the column names to make them easier to read. I also add count and the GSE so I can go look up a data set from GEO that looks interesting to me.
+s1 <- read_xlsx("docs/S1_datasets.xlsx") %>%
+  clean_names() %>%
+  mutate(
+  n_disease = suppressWarnings(as.integer(n_disease)),
+  n_control = suppressWarnings(as.integer(n_control)),
+  total = n_disease + n_control,
+  gse_base = str_extract(geo_id, "^GSE\\d+")
+)
+
+# Save a cleaned copy for reproducibility
+readr::write_tsv(s1, "docs/S1_datasets_clean.tsv")
+
+#Step 3 - Shortlist candidates ----
+cand <- s1 %>%
+  filter(!is.na(gse_base), total >= 10) %>%
+  arrange(desc(total)) %>%
+  select(gse_base, dataset_id, disease, disease_abbreviation, tissue, source, n_disease, n_control, total, covariate)
+  
+print(head(cand, 15))
+
+#Step 4 - Download GEO query from chosen candidate ----
+

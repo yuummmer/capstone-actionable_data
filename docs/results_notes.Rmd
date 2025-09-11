@@ -1,0 +1,23 @@
+# Phase 2 — Reproduced Figure Notes (GSE202177)
+
+**Unit of analysis:** Human leukocytes (blood), males only  
+**Contrast:** FXS vs Control  
+**Subset size used:** FXS: __, Control: __ (from Series matrix)  
+**Files:** normalized counts = `GSE202177_normalized_gene_counts.csv.gz`; metadata from GEO Series Matrix  
+**Key metadata fields:** `characteristics_ch1.2` (genotype: FXS/TD)
+
+## Data wrangling notes
+- Column name fixes: (e.g., removed trailing underscore from `<sample>`).
+- Mapping: expression columns matched to `meta$title`.
+- Any samples dropped: (yes/no, reason).
+
+## QC
+- Gene filter for PCA: removed zero-variance genes; kept top N most variable.
+- PCA takeaway: (e.g., modest separation by group; no obvious outliers).
+
+## Differences vs paper
+- Paper blood cohort: ~10 FXS / 7 Control; I used __ / __ (broader leukocyte set).
+- Covariates: none used (all male; no additional recorded covariates).
+
+## Next steps
+- (Optional) Refine to exact 10/7 arm; reproduce volcano with author DE table or run DE from raw counts.

@@ -47,3 +47,6 @@ results/figures/*
 Thumbs.db
 .vscode/
 .idea/
+
+# Windows MOTW (Edge/Chrome)
+*:[Zz]one.Identifier
