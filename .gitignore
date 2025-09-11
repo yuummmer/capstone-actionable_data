@@ -38,8 +38,16 @@ data/processed/*
 
 # ---- Results ----
 results/*
+
+# Keep the figures folder and common image types
+!results/figures/
+!results/figures/*.png
+!results/figures/*.jpg
+!results/figures/*.jpeg
+!results/figures/*.svg
+
+# (optional: still keep the .gitkeep files too)
 !results/.gitkeep
-results/figures/*
 !results/figures/.gitkeep
 
 # ---- OS & Editor ----
